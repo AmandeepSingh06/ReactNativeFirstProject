@@ -24,13 +24,18 @@
     super(props);
     this.name= props.name;
     this.surname = props.surname;
+    this.state = {showTest : true};
+    setInterval(() => {
+      this.setState({showTest: !this.state.showTest});
+    }, 1000);
   }
 
   returnString = (a,b) => (a+b);
 
   render(){
+    let display = this.state.showTest ?'Hello '+ this.returnString(this.name, this.surname) + '!' : ' ';
      return(
-       <Text>Hello {this.returnString(this.name, this.surname)}!</Text>
+       <Text>{display}</Text>
      );
    }
  }
