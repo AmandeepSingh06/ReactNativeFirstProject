@@ -4,12 +4,25 @@
  * @flow
  */
  import React, {Component} from 'react';
- import {AppRegistry, Text} from 'react-native';
+ import {AppRegistry, Text, View} from 'react-native';
+
+ class Name extends Component{
+
+   render(){
+     return(
+       <Text>Hello {this.props.name} {this.props.surname}!</Text>
+     );
+   }
+ }
 
  class ReactNativeFirstProject extends Component{
    render(){
      return (
-       <Text>Hello World</Text>
+       <View style={{alignItems : 'center'}}>
+        <Name name='Amandeep' surname='Singh'/>
+        <Name name='Pritesh' surname='Nandgaonkar'/>
+        <Name name='Harish' surname='Barge'/>
+      </View>
      );
    }
  }
