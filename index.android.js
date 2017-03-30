@@ -4,7 +4,7 @@
  * @flow
  */
  import React, {Component} from 'react';
- import {AppRegistry, Text, View} from 'react-native';
+ import {AppRegistry, StyleSheet, Text, View} from 'react-native';
 
 
 
@@ -12,8 +12,8 @@
    render(){
      return (
        <View style={{alignItems : 'center'}}>
-       <Name name='Amandeep' surname='Singh'/>
-       <Name name='Pritesh' surname='Nandgaonkar'/>
+       <Name styleProperty={styles.red} name='Amandeep' surname='Singh'/>
+       <Name styleProperty={styles.blue} name='Pritesh' surname='Nandgaonkar'/>
       </View>
      );
    }
@@ -25,6 +25,7 @@
     this.name= props.name;
     this.surname = props.surname;
     this.state = {showTest : true};
+    this.styleProperty = props.styleProperty;
     setInterval(() => {
       this.setState({showTest: !this.state.showTest});
     }, 1000);
@@ -35,8 +36,19 @@
   render(){
     let display = this.state.showTest ?'Hello '+ this.returnString(this.name, this.surname) + '!' : ' ';
      return(
-       <Text>{display}</Text>
+       <Text style={this.styleProperty}>{display}</Text>
      );
    }
  }
+
+ const styles = StyleSheet.create({
+    red: {
+      color : 'red'
+    },
+    blue: {
+      color : 'blue',
+      fontWeight : 'bold',
+      fontSize : 30,
+    },
+ });
 AppRegistry.registerComponent('ReactNativeFirstProject', () => ReactNativeFirstProject);
